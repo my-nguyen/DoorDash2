@@ -21,7 +21,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tv_name"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -34,14 +34,14 @@
         tools:text="Poke House" />
 
     <TextView
-        android:id="@+id/tv_description"
+        android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/ttnorms_medium"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_name"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/name"
         tools:text="Hawaiian * Poke" />
 
     <TextView
@@ -51,8 +51,8 @@
         android:layout_marginTop="4dp"
         android:fontFamily="@font/ttnorms_medium"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_description"
-        app:layout_constraintTop_toBottomOf="@+id/tv_description"
+        app:layout_constraintStart_toStartOf="@+id/description"
+        app:layout_constraintTop_toBottomOf="@+id/description"
         tools:text="4.6" />
 
     <ImageView

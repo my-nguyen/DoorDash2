@@ -14,19 +14,19 @@ class Repository @Inject constructor(private val doorDashService: DoorDashServic
 
     fun getStores(): MutableLiveData<List<Store>> {
         val stores = MutableLiveData<List<Store>>()
-        doorDashService.getStores().enqueue(object : Callback<Stores> {
-            override fun onResponse(call: Call<Stores>, response: Response<Stores>) {
+        doorDashService.getStores().enqueue(object : Callback<List<Store>> {
+            override fun onResponse(call: Call<List<Store>>, response: Response<List<Store>>) {
                 Log.d(TAG, "onResponse $response")
                 val body = response.body()
                 if (body == null) {
                     Log.w(TAG, "Did not receive a valid response from DoorDash API... exiting")
                 } else {
-                    Log.d(TAG, "DoorDashService returns ${body.stores.size} records")
-                    stores.value = body.stores
+                    Log.d(TAG, "DoorDashService returns ${body.size} records")
+                    stores.value = body
                 }
             }
 
-            override fun onFailure(call: Call<Stores>, t: Throwable) {
+            override fun onFailure(call: Call<List<Store>>, t: Throwable) {
                 Log.d(TAG, "onFailure $t")
             }
         })

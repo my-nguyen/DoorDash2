@@ -11,8 +11,8 @@ class MenuItemsAdapter(val context: Context, private val menuItems: List<Popular
 
     inner class ViewHolder(private val binding: ItemMenuItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(menuItem: PopularItem) {
-            binding.tvName.text = menuItem.name
-            binding.tvDescription.text = menuItem.description
+            binding.name.text = menuItem.name
+            binding.description.text = menuItem.description
             binding.tvPrice.text = "$%.2f".format(menuItem.price / 100f)
             Glide.with(context).load(menuItem.img_url).into(binding.ivPicture)
         }

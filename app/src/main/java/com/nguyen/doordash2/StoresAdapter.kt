@@ -12,6 +12,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.nguyen.doordash2.databinding.ItemStoreBinding
 
+private const val TAG = "StoresAdapter"
 class StoresAdapter(private val context: Context, private val stores: List<Store>): RecyclerView.Adapter<StoresAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemStoreBinding): RecyclerView.ViewHolder(binding.root), View.OnClickListener {
@@ -22,12 +23,10 @@ class StoresAdapter(private val context: Context, private val stores: List<Store
 
         fun bind(store: Store) {
             val roundedCorners = RequestOptions().transform(CenterCrop(), RoundedCorners(20))
-            val url = if (store.header_img_url.isNotEmpty()) store.header_img_url else store.cover_img_url
-            Glide.with(context).load(url).apply(roundedCorners).into(binding.ivFood)
-            binding.tvName.text = store.name
-            binding.tvDescription.text = store.description
-            binding.tvHowFar.text = "${store.status.asap_minutes_range[0]} min"
-            binding.tvIsFreeDelivery.text = store.display_delivery_fee
+            Glide.with(context).load(store.coverImgUrl).apply(roundedCorners).into(binding.image)
+            binding.name.text = store.name
+            binding.description.text = store.description
+            binding.deliveryFee.text = store.deliveryFee
         }
 
         override fun onClick(v: View?) {

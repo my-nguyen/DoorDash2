@@ -6,70 +6,60 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/iv_food"
+        android:id="@+id/image"
         android:layout_width="0dp"
         android:layout_height="170dp"
         android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tv_name"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/ttnorms_medium"
         android:textColor="@color/black"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/iv_food"
-        app:layout_constraintTop_toBottomOf="@+id/iv_food"
+        app:layout_constraintStart_toStartOf="@+id/image"
+        app:layout_constraintTop_toBottomOf="@+id/image"
         tools:text="Lee's Sandwiches" />
 
-    <androidx.constraintlayout.widget.Guideline
+    <!--<androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.67" />
+        app:layout_constraintGuide_percent="0.80" />-->
 
     <TextView
-        android:id="@+id/tv_description"
+        android:id="@+id/description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
+        android:layout_marginEnd="16dp"
         android:ellipsize="end"
-        android:singleLine="true"
         android:fontFamily="@font/ttnorms_medium"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@id/guideline"
-        app:layout_constraintStart_toStartOf="@+id/tv_name"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name"
+        android:singleLine="true"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@id/delivery_fee"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/name"
         tools:text="$ . Vietnamese, Sandwiches, Coffee..." />
 
     <TextView
-        android:id="@+id/tv_how_far"
+        android:id="@+id/delivery_fee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/ttnorms_medium"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/iv_food"
-        app:layout_constraintTop_toTopOf="@+id/tv_name"
-        tools:text="26 min" />
-
-    <TextView
-        android:id="@+id/tv_is_free_delivery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/ttnorms_medium"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/tv_how_far"
-        app:layout_constraintTop_toTopOf="@+id/tv_description"
-        tools:text="Free delivery" />
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/image"
+        app:layout_constraintTop_toTopOf="@+id/description"
+        tools:text="100" />
 </androidx.constraintlayout.widget.ConstraintLayout>

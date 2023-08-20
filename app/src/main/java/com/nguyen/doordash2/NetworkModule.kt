@@ -12,7 +12,7 @@ class NetworkModule {
     @Provides
     fun provideRetroService(): DoorDashService {
         return Retrofit.Builder()
-            .baseUrl("https://api.doordash.com/")
+            .baseUrl("https://dd-interview.github.io/android/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(DoorDashService::class.java)

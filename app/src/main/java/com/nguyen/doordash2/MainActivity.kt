@@ -11,7 +11,6 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     companion object {
-        const val BASE_URL = "https://api.doordash.com/"
         const val TAG = "MainActivity"
     }
 
@@ -19,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     @Inject lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        (application as MyApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         // setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
         binding.rvStores.adapter = adapter
         binding.rvStores.layoutManager = LinearLayoutManager(this)
 
-        (applicationContext as MyApplication).appComponent.inject(this)
         viewModel.getStores().observe(this, Observer {
             Log.d(TAG, "Observer received ${it!!.size} stores")
             stores.addAll(it)

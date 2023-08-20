@@ -22,15 +22,14 @@ class RestaurantActivity : AppCompatActivity() {
     @Inject lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        (application as MyApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         // setContentView(R.layout.activity_restaurant)
         binding = ActivityStoreBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val store = intent.getSerializableExtra("EXTRA_STORE") as Store
-
-        (applicationContext as MyApplication).appComponent.inject(this)
-        viewModel.getRestaurant(store.id).observe(this, Observer { restaurant ->
+        /*viewModel.getRestaurant(store.id).observe(this, Observer { restaurant ->
             val roundedCorners = RequestOptions().transform(CenterCrop(), RoundedCorners(20))
             val url = if (store.header_img_url.isNotEmpty()) store.header_img_url else store.cover_img_url
             Glide.with(this).load(url).apply(roundedCorners).into(binding.ivPicture)
@@ -54,6 +53,6 @@ class RestaurantActivity : AppCompatActivity() {
             binding.rvMenu.layoutManager = layoutManager
             val decor = DividerItemDecoration(this, layoutManager.orientation)
             binding.rvMenu.addItemDecoration(decor)
-        })
+        })*/
     }
 }

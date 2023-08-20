@@ -1,10 +1,22 @@
 package com.nguyen.doordash2
 
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class Stores(val num_results: Int, val next_offset: Int, val stores: List<Store>)
-
 data class Store(
+    val id: String,
+    val name: String,
+    val description: String,
+    @SerializedName("cover_img_url")
+    val coverImgUrl: String,
+    val status: String,
+    @SerializedName("delivery_fee")
+    val deliveryFee: String
+): Serializable
+
+data class Stores(val num_results: Int, val next_offset: Int, val stores: List<Store2>)
+
+data class Store2(
     val delivery_fee: Float,
     val num_ratings: Int,
     val id: Int,
