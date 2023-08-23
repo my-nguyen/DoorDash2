@@ -11,5 +11,5 @@ class MainViewModel @Inject constructor(private val repository: Repository): Vie
 
     fun getStores(): LiveData<List<Store>> = stores
 
-    fun getRestaurant(id: Int) = repository.getRestaurant(id)
+    fun getStore(id: Int) = repository.getStore(id)
 }

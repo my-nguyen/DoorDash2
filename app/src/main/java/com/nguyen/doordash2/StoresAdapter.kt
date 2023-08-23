@@ -13,34 +13,26 @@ import com.bumptech.glide.request.RequestOptions
 import com.nguyen.doordash2.databinding.ItemStoreBinding
 
 private const val TAG = "StoresAdapter"
-class StoresAdapter(private val context: Context, private val stores: List<Store>): RecyclerView.Adapter<StoresAdapter.ViewHolder>() {
+class StoresAdapter(val stores: List<Store>, val listener: OnClickListener): RecyclerView.Adapter<StoresAdapter.ViewHolder>() {
+    interface OnClickListener {
+        fun onClick(position: Int)
+    }
 
-    inner class ViewHolder(private val binding: ItemStoreBinding): RecyclerView.ViewHolder(binding.root), View.OnClickListener {
-
-        init {
-            binding.root.setOnClickListener(this)
-        }
+    inner class ViewHolder(private val binding: ItemStoreBinding): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(store: Store) {
             val roundedCorners = RequestOptions().transform(CenterCrop(), RoundedCorners(20))
-            Glide.with(context).load(store.coverImgUrl).apply(roundedCorners).into(binding.image)
+            Glide.with(itemView).load(store.coverImgUrl).apply(roundedCorners).into(binding.image)
             binding.name.text = store.name
             binding.description.text = store.description
             binding.deliveryFee.text = store.deliveryFee
-        }
 
-        override fun onClick(v: View?) {
-            if (adapterPosition != RecyclerView.NO_POSITION) {
-                val store = stores[adapterPosition]
-                val intent = Intent(context, RestaurantActivity::class.java)
-                intent.putExtra("EXTRA_STORE", store)
-                context.startActivity(intent)
-            }
+            listener.onClick(adapterPosition)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflater = LayoutInflater.from(context)
+        val inflater = LayoutInflater.from(parent.context)
         val binding = ItemStoreBinding.inflate(inflater, parent, false)
         return ViewHolder(binding)
     }

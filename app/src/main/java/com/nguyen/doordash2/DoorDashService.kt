@@ -10,10 +10,8 @@ interface DoorDashService {
     @GET("v1/feed")
     fun getStores(@Query("lat") lat: Float=37.422740f,
                   @Query("lng") lng: Float=-122.139956f,
-                  /*@Query("offset") offset: Int=0,
-                  @Query("limit") limit: Int=50*/
     ): Call<List<Store>>
 
     @GET("v1/stores/{id}")
-    fun getRestaurant(@Path("id") id: Int): Call<Restaurant>
+    fun getStore(@Path("id") id: Int = 62087): Call<Restaurant>
 }

@@ -7,5 +7,5 @@ import javax.inject.Singleton
 @Component(modules = [NetworkModule::class])
 interface ApplicationComponent {
     fun inject(activity: MainActivity)
-    fun inject(activity: RestaurantActivity)
+    fun inject(activity: StoreActivity)
 }

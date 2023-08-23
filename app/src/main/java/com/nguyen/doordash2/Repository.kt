@@ -33,9 +33,9 @@ class Repository @Inject constructor(private val doorDashService: DoorDashServic
         return stores
     }
 
-    fun getRestaurant(id: Int): MutableLiveData<Restaurant> {
+    fun getStore(id: Int): MutableLiveData<Restaurant> {
         val restaurant = MutableLiveData<Restaurant>()
-        doorDashService.getRestaurant(id).enqueue(object : Callback<Restaurant> {
+        doorDashService.getStore().enqueue(object : Callback<Restaurant> {
             override fun onResponse(call: Call<Restaurant>, response: Response<Restaurant>) {
                 val body = response.body()
                 if (body == null) {
